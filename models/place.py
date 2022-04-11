@@ -20,7 +20,7 @@ place_amenity = Table('place_amenity', Base.metadata,
                              ForeignKey='amenities.id', nullable=False))
 
 
-class Place(BaseModel):
+class Place(BaseModel, Base):
     """ A place to stay """
     city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
     user_id = Column(String(60), ForeignKey('users.id'), nullable=False)

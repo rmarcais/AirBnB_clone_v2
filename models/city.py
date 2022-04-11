@@ -4,10 +4,12 @@ This module defines the class City.
 """
 
 
-from models.base_model import BaseModel
+from sqlalchemy import Column, String, ForeignKey
+from models.base_model import BaseModel, Base
 
 
-class City(BaseModel):
+class City(BaseModel, Base):
     """This class defines the name of the city"""
-    state_id = ""
-    name = ""
+    __tablename__ = "cities"
+    name = Column(String(128), nullable=False)
+    state_id = Column(String(60), ForeignKey("states.id"), nullable=False)

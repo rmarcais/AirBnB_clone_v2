@@ -46,7 +46,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             var = eval(args[0])()
-            var.save()
             print(var.id)
         for i in range(1, len(args)):
             try:
@@ -64,7 +63,7 @@ class HBNBCommand(cmd.Cmd):
                     setattr(var, str(key), nb)
             except Exception:
                 continue
-        models.storage.save()
+        var.save()
 
     def do_show(self, line):
         """Prints the string representation of an instance based on
@@ -117,9 +116,9 @@ class HBNBCommand(cmd.Cmd):
             my_list = []
             for k, v in dico.items():
                 if len(args) == 0:
-                    my_list.append(str(dico[k]))
+                    my_list.append(dico[k])
                 elif type(v) is eval(args[0]):
-                    my_list.append(str(dico[k]))
+                    my_list.append(dico[k])
             print(my_list)
 
     def do_update(self, line):

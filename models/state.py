@@ -16,7 +16,6 @@ class State(BaseModel, Base):
 
     if getenv('HBNB_TYPE_STORAGE') == "db":
         cities = relationship("City", backref="state", cascade='all, delete')
-    
     else:
         @property
         def cities(self):
@@ -25,7 +24,7 @@ class State(BaseModel, Base):
             the current State.id"""
             l = []
             dico = models.storage.all(City)
-            for key, value in dico:
+            for key, value in dico.items():
                 if value.state_id == self.id:
                     l.append(value)
             return l

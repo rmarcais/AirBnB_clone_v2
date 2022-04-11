@@ -5,6 +5,10 @@ This module defines the class State.
 
 from sqlalchemy import Column, String, Float, Integer, ForeignKey
 from models.base_model import BaseModel, Base
+from os import getenv
+from sqlalchemy.orm import relationship
+from models.review import Review
+import models
 
 
 class Place(BaseModel, Base):
@@ -21,3 +25,18 @@ class Place(BaseModel, Base):
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
     amenity_ids = []
+
+    if getenv("HBNB_TYPE_STORAGE") == "db":
+        reviews = relationship("Review", backref="place")
+    else:
+        @property
+        def reviews(self):
+            """reviews attribute"""
+
+            liste = []
+            objs = models.storage.all(Review)
+
+            for k, v in objs.items():
+                if v.place_id == self.id:
+                    liste.append(v)
+            return liste

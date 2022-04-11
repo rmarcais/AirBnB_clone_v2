@@ -25,10 +25,10 @@ class State(BaseModel, Base):
         def cities(self):
             """cities attribute"""
 
-            l = []
+            liste = []
             objs = models.storage.all(City)
 
             for k, v in objs.items():
                 if v.state_id == self.id:
-                    l.append(v)
-            return l
+                    liste.append(v)
+            return liste

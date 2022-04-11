@@ -64,7 +64,7 @@ class HBNBCommand(cmd.Cmd):
                         setattr(var, str(key), nb)
             except Exception:
                 continue
-            models.storage.save()
+        models.storage.save()
 
     def do_show(self, line):
         """Prints the string representation of an instance based on

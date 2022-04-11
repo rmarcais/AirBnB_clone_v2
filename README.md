@@ -157,9 +157,20 @@ This file is composed of methods that are used by the console :
 
 * The `reload method` deserialize the JSON file to object. In other words, bring the data in the `file.json` and change it to object.
 
-## [DataBase Storage]("work_in_progess")
+## [DataBase Storage](https://github.com/rmarcais/AirBnB_clone_v2/blob/main/models/engine/db_storage.py)
 
-![wip](/img/wip.gif "work in progress")
+This file is composed of method that are used by the console :
+* The `all method` display all the object of a class stored in the database.
+
+* The `new method` add a new object to a session.
+
+* The `save method` save everything in the current session in use.
+
+* The `delete method`  delete an object inside the current session.
+
+* The `reload method` create all table and session.
+
+* The `close method` close the session in use.
 
 ## [Console](https://github.com/rmarcais/AirBnB_clone_v2/blob/main/console.py)
 

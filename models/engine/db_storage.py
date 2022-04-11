@@ -4,7 +4,7 @@
 from os import getenv
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import (create_engine)
-from models.base_model import BaseModel, Base
+from models.base_model import Base
 from models.state import State
 from models.city import City
 from models.user import User
@@ -52,10 +52,10 @@ class DBStorage:
         if cls is None:
             list_cls += self.__session.query(State).all()
             list_cls += self.__session.query(City).all()
-            list_cls += self.__session.query(User).all()
+            """list_cls += self.__session.query(User).all()
             list_cls += self.__session.query(Place).all()
             list_cls += self.__session.query(Review).all()
-            list_cls += self.__session.query(Amenity).all()
+            list_cls += self.__session.query(Amenity).all()"""
 
         else:
             list_cls = self.__session.query(cls).all()

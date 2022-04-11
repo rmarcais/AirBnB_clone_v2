@@ -61,7 +61,7 @@ class HBNBCommand(cmd.Cmd):
                         nb = float(value)
                     else:
                         nb = int(value)
-                        setattr(var, str(key), nb)
+                    setattr(var, str(key), nb)
             except Exception:
                 continue
         models.storage.save()

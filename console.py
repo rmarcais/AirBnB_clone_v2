@@ -20,13 +20,16 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
     file = None
     c = ["BaseModel", "Amenity", "City", "Place", "Review", "State", "User"]
+
     def emptyline(self):
         """Method to only print the message once"""
         pass
+
     def do_quit(self, line):
         """Quit command to exit the program
         """
         quit()
+
     def do_EOF(self, line):
         """EOF command to exit the program
         """
@@ -62,6 +65,7 @@ class HBNBCommand(cmd.Cmd):
             except Exception:
                 continue
             models.storage.save()
+
     def do_show(self, line):
         """Prints the string representation of an instance based on
         the class name and id
@@ -80,6 +84,7 @@ class HBNBCommand(cmd.Cmd):
                 print(dico[args[0] + '.' + args[1]])
             except Exception:
                 print("** no instance found **")
+
     def do_destroy(self, line):
         """Deletes an instance based on the class name and id
         Usage: destroy <class name> <id> or <class name>.destroy(<id>)
@@ -98,6 +103,7 @@ class HBNBCommand(cmd.Cmd):
                 models.storage.save()
             except Exception:
                 print("** no instance found **")
+
     def do_all(self, line):
         """Prints all string representation of all instances based
         or not on the class name
@@ -175,6 +181,7 @@ class HBNBCommand(cmd.Cmd):
             print(len(my_list))
         else:
             print("** class name missing **")
+
     def default(self, line):
         """Method called when the command isn't reconnized"""
         methods = {

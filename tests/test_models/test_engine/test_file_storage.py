@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """ Module for testing file storage"""
 import unittest
+import os
 from models.base_model import BaseModel
 from models import storage
-import os
+import pycodestyle
 
 
 class test_fileStorage(unittest.TestCase):
@@ -23,6 +24,12 @@ class test_fileStorage(unittest.TestCase):
             os.remove('file.json')
         except Exception:
             pass
+
+    def test_pep8_Amenity(self):
+        """Tests pep8 style"""
+        style = pycodestyle.StyleGuide(quiet=True)
+        p = style.check_files(['models/test_file_storage.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")
 
     def test_obj_list_empty(self):
         """ __objects is initially empty """

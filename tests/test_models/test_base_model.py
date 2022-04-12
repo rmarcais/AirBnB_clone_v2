@@ -7,6 +7,7 @@ import datetime
 from uuid import UUID
 import json
 import os
+import pycodestyle
 
 
 class test_basemodel(unittest.TestCase):
@@ -25,8 +26,14 @@ class test_basemodel(unittest.TestCase):
     def tearDown(self):
         try:
             os.remove('file.json')
-        except:
+        except Exception:
             pass
+
+    def test_pep8_Amenity(self):
+        """Tests pep8 style"""
+        style = pycodestyle.StyleGuide(quiet=True)
+        p = style.check_files(['models/test_base_model.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")
 
     def test_default(self):
         """ """

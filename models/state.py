@@ -14,12 +14,12 @@ from models.city import City
 
 class State(BaseModel, Base):
     """This class defines the name of the state"""
-    __tablename__ = "states"
-    name = Column(String(128), nullable=False)
-
     if getenv('HBNB_TYPE_STORAGE') == 'db':
+        __tablename__ = "states"
+        name = Column(String(128), nullable=False)
         cities = relationship("City", backref="state")
     else:
+        name = ""
 
         @property
         def cities(self):

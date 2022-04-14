@@ -10,6 +10,7 @@ import os
 
 type_storage = os.getenv("HBNB_TYPE_STORAGE")
 
+
 class test_basemodel(unittest.TestCase):
     """ """
 

@@ -2,6 +2,7 @@
 """ """
 from tests.test_models.test_base_model import test_basemodel
 from models.amenity import Amenity
+import pycodestyle
 
 
 class test_Amenity(test_basemodel):
@@ -17,6 +18,13 @@ class test_Amenity(test_basemodel):
         """ """
         self.assertEqual(type(self.name), str)
     
+    def test_pep8_DBStorage(self):
+        """pep8 test"""
+        style = pycodestyle.StyleGuide(quiet=True)
+        p = style.check_files(['models/engine/db_storage.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")
+
+
     def test_save(self):
         """ """
         self.amenity.save()

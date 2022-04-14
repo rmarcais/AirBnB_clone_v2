@@ -18,7 +18,7 @@ class test_Amenity(test_basemodel):
     def teardown(self):
         """ """
         try:
-            os.remove()
+            os.remove("file.json")
         except Exception:
             pass
 

@@ -30,3 +30,10 @@ class test_Amenity(test_basemodel):
         self.amenity.save()
         self.assertNotEqual(self.amenity.created_ad, self.amenity.updated_at)
 
+    def test_attr(self):
+        """ """
+        self.assertTrue('id' in self.amenity.__dict__)
+        self.assertTrue('created_at' in self.amenity.__dict__)
+        self.assertTrue('updated_at' in self.amenity.__dict__)
+        self.assertTrue('name' in self.amenity.__dict__)
+

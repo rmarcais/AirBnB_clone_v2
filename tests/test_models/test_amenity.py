@@ -16,3 +16,9 @@ class test_Amenity(test_basemodel):
     def test_name2(self):
         """ """
         self.assertEqual(type(self.name), str)
+    
+    def test_save(self):
+        """ """
+        self.amenity.save()
+        self.assertNotEqual(self.amenity.created_ad, self.amenity.updated_at)
+

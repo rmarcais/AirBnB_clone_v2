@@ -13,12 +13,17 @@ from os import path
 
 def do_pack():
     """Function that does a pack with the files of the folder web_static."""
-    if path.exists('versions/') is False:
-        local("mkdir versions/")
-    local("tar -cvzf versions/web_static_{}{}{}{}{}{}.tgz web_static"
-          .format(stf("%Y"),
-                  stf("%m"),
-                  stf("%d"),
-                  stf("%H"),
-                  stf("%M"),
-                  stf("%S")))
+    try:
+        if path.exists('versions/') is False:
+            local("mkdir versions/")
+        filename = "versions/web_static_{}{}{}{}{}{}.tgz".format(
+            stf("%Y"),
+            stf("%m"),
+            stf("%d"),
+            stf("%H"),
+            stf("%M"),
+            stf("%S"))
+        local("tar -cvzf {} web_static".format(filename))
+        return filename
+    except Exception:
+        return None

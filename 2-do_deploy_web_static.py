@@ -15,6 +15,23 @@ from os import path
 env.hosts = ['34.74.115.199', '34.74.58.247']
 
 
+def do_pack():
+    """Function that does a pack with the files of the folder web_static."""
+    if path.exists('versions/') is False:
+        local("mkdir versions/")
+    filename = "versions/web_static_{}{}{}{}{}{}.tgz".format(
+        stf("%Y"),
+        stf("%m"),
+        stf("%d"),
+        stf("%H"),
+        stf("%M"),
+        stf("%S"))
+    a = local("tar -cvzf {} web_static".format(filename))
+    if a.failed is True:
+        return None
+    return filename
+
+
 def do_deploy(archive_path):
     """ Function that deploys archive path. """
     if path.exists(archive_path) is False:

@@ -75,6 +75,7 @@ def do_deploy(archive_path):
 
 def deploy():
     """ Function that deploys static content. """
+    archive = do_pack()
     if archive is None:
         return False
     return (do_deploy(archive))

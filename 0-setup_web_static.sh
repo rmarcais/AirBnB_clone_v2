@@ -4,21 +4,9 @@ if [ ! -x /usr/sbin/nginx ]; then
     sudo apt-get -y update
     sudo apt-get -y install nginx
 fi
-if [ ! -d "/data/" ]; then
-    mkdir /data/
-fi
-if [ ! -d "/data/web_static/" ]; then
-    mkdir /data/web_static/
-fi
-if [ ! -d "/data/web_static/releases/" ]; then
-    mkdir /data/web_static/releases/
-fi
-if [ ! -d "/data/web_static/releases/test" ]; then
-    mkdir /data/web_static/releases/test/
-fi
-if [ ! -d "/data/web_static/shared/" ]; then
-    mkdir /data/web_static/shared/
-fi
+mkdir -p /data/web_static/
+mkdir -p /data/web_static/releases/test/
+mkdir -p /data/web_static/shared/
 echo "Hello Holberton !" > /data/web_static/releases/test/index.html
 ln -sf /data/web_static/releases/test/ /data/web_static/current
 sudo chown -R ubuntu:ubuntu /data/

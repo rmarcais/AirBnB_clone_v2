@@ -10,6 +10,7 @@ from fabric.api import put
 from fabric.api import env
 import os.path
 from os import path
+from time import strftime as stf
 
 
 env.hosts = ['34.74.115.199', '34.74.58.247']

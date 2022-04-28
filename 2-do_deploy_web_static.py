@@ -52,4 +52,5 @@ def do_deploy(archive_path):
             .format(no_ext[0]))
     if a.failed is True:
         return False
+    print("New version deployed!")
     return True

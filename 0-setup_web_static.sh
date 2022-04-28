@@ -6,6 +6,6 @@ mkdir -p /data/web_static/releases/test/
 mkdir -p /data/web_static/shared/
 echo "Hello Holberton !" > /data/web_static/releases/test/index.html
 ln -sf /data/web_static/releases/test/ /data/web_static/current
-sudo chown -hR ubuntu:ubuntu /data/
-sed -i '/server_name _;/a location /hbnb_static { alias /data/web_static/current/; }' /etc/nginx/sites-available/default
+sudo chown -R ubuntu:ubuntu /data/
+sed -i '47i\\tlocation /hbnb_static { alias /data/web_static/current/; }' /etc/nginx/sites-available/default
 sudo service nginx restart

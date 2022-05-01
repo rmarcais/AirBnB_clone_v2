@@ -1,37 +1,19 @@
 # Task #0 but by using Puppet
 
-exec { 'apt-get -y update':
-path    => '/usr/bin/env',
-}
+exec { '/usr/bin/env apt-get -y update': }
 
--> exec { 'apt-get -y install nginx':
-path    => '/usr/bin/env',
-}
+-> exec { '/usr/bin/env apt-get -y install nginx': }
 
--> exec { 'mkdir -p /data/web_static/releases/test/':
-path    => '/usr/bin/env',
-}
+-> exec { '/usr/bin/env mkdir -p /data/web_static/releases/test/': }
 
--> exec { 'mkdir -p /data/web_static/shared/':
-path    => '/usr/bin/env',
-}
+-> exec { '/usr/bin/env mkdir -p /data/web_static/shared/': }
 
--> exec { 'echo "Hello Holberton !" > /data/web_static/releases/test/index.html':
-path    => '/usr/bin/env',
-}
+-> exec { '/usr/bin/env echo "Hello Holberton !" > /data/web_static/releases/test/index.html': }
 
--> exec { 'ln -sf /data/web_static/releases/test/ /data/web_static/current':
-path    => '/usr/bin/env',
-}
+-> exec { '/usr/bin/env ln -sf /data/web_static/releases/test/ /data/web_static/current': }
 
--> exec { 'chown -R ubuntu:ubuntu /data/':
-path    => '/usr/bin/env',
-}
+-> exec { '/usr/bin/env chown -R ubuntu:ubuntu /data/': }
 
--> exec { 'sed -i '47i\\tlocation /hbnb_static { alias /data/web_static/current/; }' /etc/nginx/sites-available/default':
-path    => '/usr/bin/env',
-}
+-> exec { '/usr/bin/env sed -i '47i\\tlocation /hbnb_static { alias /data/web_static/current/; }' /etc/nginx/sites-available/default': }
 
--> exec { 'service nginx restart':
-path    => '/usr/sbin/env',
-}
+-> exec { '/usr/sbin/env service nginx restart': }

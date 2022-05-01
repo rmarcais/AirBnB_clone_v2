@@ -5,9 +5,9 @@ command => 'apt-get -y update',
 path    => '/usr/bin/',
 }
 
-exec { '2':
-command => 'apt-get -y install nginx',
-path    => '/usr/bin/',
+package { 'nginx':
+ensure   => 'installed',
+provider => 'apt',
 }
 
 exec { '3':
@@ -20,9 +20,10 @@ command => 'mkdir -p /data/web_static/shared/',
 path    => '/usr/bin/',
 }
 
-exec { '5':
-command => 'echo "Hello Holberton !" > /data/web_static/releases/test/index.html',
-path    => '/usr/bin/',
+file { '/data/web_static/releases/test/index.html':
+ensure  => 'present',
+path    => '/data/web_static/releases/test/index.html',
+content => 'Hello Holberton !\n',
 }
 
 exec { '6':
@@ -40,7 +41,7 @@ command => "sed -i '47i\\tlocation /hbnb_static { alias /data/web_static/current
 path    => '/usr/bin/',
 }
 
-exec { '9':
-command => 'service nginx restart',
-path    => '/usr/sbin/',
+service { 'nginx':
+ensure  => 'running',
+require => Package['nginx'],
 }

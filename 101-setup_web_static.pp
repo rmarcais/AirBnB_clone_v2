@@ -16,4 +16,4 @@ exec { '/usr/bin/env apt-get -y update': }
 
 -> exec { '/usr/bin/env sed -i '47i\\tlocation /hbnb_static { alias /data/web_static/current/; }' /etc/nginx/sites-available/default': }
 
--> exec { '/usr/sbin/env service nginx restart': }
+-> exec { '/usr/bin/env service nginx restart': }

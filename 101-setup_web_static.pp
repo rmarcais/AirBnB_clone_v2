@@ -1,47 +1,37 @@
 # Task #0 but by using Puppet
 
-exec { '1':
-command => 'apt-get -y update',
-path    => '/usr/bin/',
+exec { 'apt-get -y update':
+path    => '/usr/bin/env',
 }
 
--> package { 'nginx':
-ensure   => 'installed',
-provider => 'apt',
+-> exec { 'apt-get -y install nginx':
+path    => '/usr/bin/env',
 }
 
--> exec { '3':
-command => 'mkdir -p /data/web_static/releases/test/',
-path    => '/usr/bin/',
+-> exec { 'mkdir -p /data/web_static/releases/test/':
+path    => '/usr/bin/env',
 }
 
--> exec { '4':
-command => 'mkdir -p /data/web_static/shared/',
-path    => '/usr/bin/',
+-> exec { 'mkdir -p /data/web_static/shared/':
+path    => '/usr/bin/env',
 }
 
--> file { '/data/web_static/releases/test/index.html':
-ensure  => 'present',
-path    => '/data/web_static/releases/test/index.html',
-content => 'Hello Holberton !\n',
+-> exec { 'echo "Hello Holberton !" > /data/web_static/releases/test/index.html':
+path    => '/usr/bin/env',
 }
 
--> exec { '6':
-command => 'ln -sf /data/web_static/releases/test/ /data/web_static/current',
-path    => '/usr/bin/',
+-> exec { 'ln -sf /data/web_static/releases/test/ /data/web_static/current':
+path    => '/usr/bin/env',
 }
 
--> exec { '7':
-command => 'sudo chown -R ubuntu:ubuntu /data/',
-path    => '/usr/bin/',
+-> exec { 'chown -R ubuntu:ubuntu /data/':
+path    => '/usr/bin/env',
 }
 
-->exec { '8':
-command => "sed -i '47i\\tlocation /hbnb_static { alias /data/web_static/current/; }' /etc/nginx/sites-available/default",
-path    => '/usr/bin/',
+-> exec { 'sed -i '47i\\tlocation /hbnb_static { alias /data/web_static/current/; }' /etc/nginx/sites-available/default':
+path    => '/usr/bin/env',
 }
 
--> service { 'nginx':
-ensure  => 'running',
-require => Package['nginx'],
+-> exec { 'service nginx restart':
+path    => '/usr/sbin/env',
 }

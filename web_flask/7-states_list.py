@@ -20,7 +20,7 @@ def states_list():
 
 
 @app.teardown_appcontext
-def tear_down(exception):
+def tear_down(self):
     """ Method that reloves the current SQLAlchemy Session. """
     storage.close()
 

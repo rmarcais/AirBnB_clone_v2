@@ -14,15 +14,11 @@ def states_list():
     list_s = []
     list_c = []
     dico_s = storage.all(State)
-    dico_c = storage.all(City)
     for k, v in dico_s.items():
         list_s.append(dico_s[k])
     list_so = sorted(list_s, key=lambda d: d.name)
-    for k, v in dico_c.items():
-        list_c.append(dico_c[k])
-    list_co = sorted(list_c, key=lambda d: d.name)
     return render_template('8-cities_by_states.html',
-                           list_s=list_so, list_c=list_co)
+                           list_s=list_so)
 
 
 @app.teardown_appcontext

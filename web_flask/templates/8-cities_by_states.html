@@ -9,10 +9,8 @@
       {% for item in list_s %}
       <li>{{ item['id'] }}: <b>{{ item['name'] }}</b>
 	<ul>
-	  {% for items in list_c %}
-	  {% if items['state_id'] == item['id'] %}
+	  {% for items in item.cities|sort(attribute="name") %}
 	  <li>{{ items['id'] }}: <b>{{ items['name'] }}</b></li>
-	  {% endif %}
 	  {% endfor %}
 	</ul>
       </li>

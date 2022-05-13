@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 @app.route('/states_list', strict_slashes=False)
 def states_list():
+    """ Returns a template that lists all State present in DBStorage. """
     list_s = []
     dico = storage.all(State)
     for k, v in dico.items():

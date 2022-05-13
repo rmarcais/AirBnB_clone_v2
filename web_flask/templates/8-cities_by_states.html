@@ -7,10 +7,10 @@
     <h1>States</h1>
     <ul>
       {% for item in list_s %}
-      <li>{{ item['id'] }}: <b>{{ item['name'] }}</b>
+      <li>{{ item.id }}: <b>{{ item.name }}</b>
 	<ul>
 	  {% for items in item.cities|sort(attribute="name") %}
-	  <li>{{ items['id'] }}: <b>{{ items['name'] }}</b></li>
+	  <li>{{ items.id }}: <b>{{ items.name }}</b></li>
 	  {% endfor %}
 	</ul>
       </li>

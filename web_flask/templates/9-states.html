@@ -6,12 +6,12 @@
   <BODY>
     {% if list_s != [] %}
     <H1>
-      State: {{ list_s[0]['name'] }}
+      State: {{ list_s[0].name }}
     </H1>
     <H3>Cities:</H3>
     <UL>
       {% for items in list_s[0].cities|sort(attribute="name") %}
-      <li>{{ items['id'] }}: <b>{{ items['name'] }}</b></li>
+      <li>{{ items.id }}: <b>{{ items.name }}</b></li>
       {% endfor %}
     </UL>
     {% else %}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../static/styles/3-footer.css">
+    <link rel="stylesheet" href="../static/styles/3-header.css">
+    <link rel="stylesheet" href="../static/styles/4-common.css">
+    <link rel="stylesheet" href="../static/styles/6-filters.css">
+    <link rel="stylesheet" href="../static/styles/8-places.css">
+    <link rel="icon" href="images/icon.png">
+    <title>
+      AirBnB clone
+    </title>
+    </head>
+    <body>
+        <header>
+        </header>
+        <div class="container">
+            <section class="filters">
+                <div class="locations">
+                    <h3>
+                        States
+                      </h3>
+                      <h4>
+                        &nbsp
+                      </h4>
+                      <ul class="popover">
+                          {% for item in list_s %}
+                          <li class="statename"><b>{{ item.name }}</b>
+                              <ul>
+                              {% for items in item.cities|sort(attribute="name") %}
+                              <li class="city">{{ items.name }}</li>
+                              {% endfor %}
+                              </ul>
+                          </li>
+                          {% endfor %}
+                      </ul>
+                </div>
+                <div class="amenities">
+                    <h3>
+                        Amenitites
+                      </h3>
+                      <h4>
+                        &nbsp
+                      </h4>
+                      <ul class="popover">
+                          {% for item in list_a %}
+                          <li>{{ item.name }}</li>
+                          {% endfor %}
+                      </ul>
+                </div>
+                <button>
+                    Search
+                </button>
+            </section>
+            <section class="places">
+                <h1>Places</h1>
+                {% autoescape false %}
+                {% for item in list_p|sort(attribute="name") %}
+                <article>
+                    <div class="title">
+                        <h2>{{ item.name }}</h2>
+                        <div class="price_by_night">
+                            <p>{{ item.price_by_night }}$</p>
+                    </div>
+                    </div>
+                    <div class="information">
+                        <div class="max_guest">
+                            <p>
+                                {{ item.max_guest }} Guest
+                            </p>
+                        </div>
+                        <div class="number_rooms">
+                            <p>{{ item.number_rooms }} Room</p>
+                        </div>
+                        <div class="number_bathrooms">
+                            <p>{{ item.number_bathrooms }} Bathroom</p>
+                        </div>
+                    </div>
+                    <div class="user">
+                        <p><b>Owner</b>: {{ item.user.first_name }} {{ item.user.last_name }}</p>
+                    </div>
+                    <div class="description">
+                        <p>{{ item.description }}
+                        </p>
+                    </div>
+                </article>
+                {% endfor %}
+                {% endautoescape %}
+            </section>
+        </div>
+        <footer>
+            <p>Best School</p>
+        </footer>
+    </body>
+</html>

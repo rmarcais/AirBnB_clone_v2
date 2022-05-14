@@ -47,6 +47,7 @@ class FileStorage:
         from models.city import City
         from models.amenity import Amenity
         from models.review import Review
+
         classes = {
                     'BaseModel': BaseModel, 'User': User, 'Place': Place,
                     'State': State, 'City': City, 'Amenity': Amenity,
@@ -62,5 +63,4 @@ class FileStorage:
             pass
 
     def close(self):
-        """ Method that dezerializes the JSON file to objects. """
         self.reload()

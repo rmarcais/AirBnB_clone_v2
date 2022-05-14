@@ -2,6 +2,8 @@
 """state.py
 This module defines the class State.
 """
+
+
 import models
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
@@ -18,11 +20,14 @@ class State(BaseModel, Base):
     if getenv('HBNB_TYPE_STORAGE') == 'db':
         cities = relationship("City", backref="state")
     else:
+
         @property
         def cities(self):
             """cities attribute"""
+
             liste = []
             objs = models.storage.all(City)
+
             for k, v in objs.items():
                 if v.state_id == self.id:
                     liste.append(v)
